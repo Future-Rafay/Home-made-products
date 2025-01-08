@@ -1,5 +1,4 @@
 // import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
-// import { FaPlus, FaMinus } from "react-icons/fa";
 
 // interface FAQ {
 //   question: string;
@@ -32,12 +31,9 @@
 //         <h2 className="text-3xl font-bold mb-8 text-dark-slate">Frequently Asked Questions</h2>
 //         <Accordion type="multiple" className="space-y-4">
 //           {faqData.map((faq, index) => (
-//             <AccordionItem key={index} className="bg-white p-6 rounded-lg shadow-lg">
+//             <AccordionItem key={index} value={`item-${index}`} className="bg-white p-6 rounded-lg shadow-lg">
 //               <AccordionTrigger className="flex justify-between items-center cursor-pointer text-lg font-semibold text-dark-slate hover:text-emerald-600">
 //                 <span>{faq.question}</span>
-//                 <span className="text-emerald-600">
-//                   <FaPlus className="inline-block" />
-//                 </span>
 //               </AccordionTrigger>
 //               <AccordionContent className="mt-4 text-gray-600">{faq.answer}</AccordionContent>
 //             </AccordionItem>
@@ -77,14 +73,19 @@ const faqData: FAQ[] = [
 
 export default function FAQ() {
   return (
-    <section className="bg-light-gray py-16">
+    <section className="bg-[#F9FAFB] py-16">
       <div className="container mx-auto text-center px-4">
-        <h2 className="text-3xl font-bold mb-8 text-dark-slate">Frequently Asked Questions</h2>
+        <h2 className="text-3xl sm:text-4xl font-bold mb-8 text-[#134C28]">Frequently Asked Questions</h2>
         <Accordion type="multiple" className="space-y-4">
           {faqData.map((faq, index) => (
-            <AccordionItem key={index} value={`item-${index}`} className="bg-white p-6 rounded-lg shadow-lg">
-              <AccordionTrigger className="flex justify-between items-center cursor-pointer text-lg font-semibold text-dark-slate hover:text-emerald-600">
+            <AccordionItem
+              key={index}
+              value={`item-${index}`}
+              className="bg-white p-6 rounded-lg shadow-lg transition-transform duration-300 hover:scale-105"
+            >
+              <AccordionTrigger className="flex justify-between items-center cursor-pointer text-lg font-semibold text-[#134C28] hover:text-[#9BB536]">
                 <span>{faq.question}</span>
+              
               </AccordionTrigger>
               <AccordionContent className="mt-4 text-gray-600">{faq.answer}</AccordionContent>
             </AccordionItem>

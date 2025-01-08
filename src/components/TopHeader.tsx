@@ -10,10 +10,10 @@ export default function TopHeader() {
   if (!isVisible) return null;
 
   return (
-   <div className="bg-yellow-100 text-gray-800 py-2 px-4">
+   <div className="hidden md:block bg-yellow-100 text-gray-800 py-2 px-4">
      
-     <div className="flex items-center justify-between mx-40">
-      <p className="text-sm">
+     <div className="flex items-center justify-between md:mx-40">
+      <p className="text-xs md:text-sm">
         We only offer pick up. For more info,{" "}
         <Link href="/contact" className="text-emerald-600 font-semibold hover:underline">
           contact us
@@ -25,7 +25,7 @@ export default function TopHeader() {
         className="text-gray-800 hover:text-red-600 transition"
         aria-label="Close"
       >
-        <AiOutlineClose size={20} />
+        <AiOutlineClose className="w-3 h-3 md:w-5 md:h-5" />
       </button>
     </div>
    </div>

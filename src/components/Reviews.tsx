@@ -35,7 +35,7 @@ export default function Reviews() {
     className="bg-[#F9FAFB] py-16"
     >
       <div className="container mx-auto text-center px-4">
-        <h2 className="text-3xl sm:text-4xl font-bold mb-8 text-[#134C28]">Customer Reviews</h2>
+        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-8 text-[#134C28]">Customer Reviews</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {reviewsData.map((review, index) => (
             <Card

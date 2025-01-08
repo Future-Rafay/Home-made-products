@@ -36,7 +36,7 @@ export default function RootLayout({
       </head>
       <body
       // className={`${geistSans.variable} ${geistMono.variable} antialiased`} 
-      className="max-w-[1440px] mx-auto"
+      className="max-w-[1440px] mx-auto text-center"
       >
         <SidebarProvider> 
           <AppSidebar />

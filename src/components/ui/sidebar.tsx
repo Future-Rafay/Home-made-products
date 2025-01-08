@@ -283,7 +283,7 @@ const SidebarTrigger = React.forwardRef<
       <FaBars />
       <span className="sr-only">Toggle Menu</span>
     </Button>
-  )
+  ) 
 })
 SidebarTrigger.displayName = "SidebarTrigger"
 

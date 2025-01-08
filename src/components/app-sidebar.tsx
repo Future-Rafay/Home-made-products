@@ -1,0 +1,65 @@
+import {
+  Sidebar,
+  SidebarContent,
+  SidebarGroup,
+  SidebarGroupContent,
+  SidebarGroupLabel,
+  SidebarMenu,
+  SidebarMenuButton,
+  SidebarMenuItem,
+} from "@/components/ui/sidebar"
+import Link from "next/link"
+import { FaHome, FaInfoCircle, FaLeaf, FaPhoneAlt } from "react-icons/fa"
+import { Separator } from "./ui/separator"
+
+// Menu items.
+const items = [
+  {
+    title: "Home",
+    url: "/",
+    icon: FaHome,
+  },
+  {
+    title: "Products",
+    url: "/products",
+    icon: FaLeaf,
+  },
+  {
+    title: "About",
+    url: "/about",
+    icon: FaInfoCircle,
+  },
+  {
+    title: "Contact",
+    url: "/contact",
+    icon: FaPhoneAlt,
+  },
+]
+
+export function AppSidebar() {
+  return (
+    <Sidebar>
+      <SidebarContent>
+        <SidebarGroup >
+          <SidebarGroupLabel className="font-bold">Menu</SidebarGroupLabel>
+          <SidebarGroupContent>
+            <SidebarMenu >
+              {items.map((item) => (
+                <SidebarMenuItem key={item.title}>
+                  <SidebarMenuButton asChild>
+                    <Link href={item.url}  className="text-green-800 hover:text-green-600">
+                      <item.icon />
+                      <span>{item.title}</span>
+                    </Link>
+                  </SidebarMenuButton>
+                  <Separator />
+                </SidebarMenuItem>
+              ))}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+      </SidebarContent>
+    </Sidebar>
+
+  )
+}

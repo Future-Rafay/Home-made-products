@@ -8,7 +8,7 @@ import Image from "next/image";
 
 export default function Header() {
   return (
-    <header className="bg-green-900 shadow sticky top-0 z-50">
+    <header className="bg-[#134C28] shadow sticky top-0 z-50">
       <div className="container mx-auto flex items-center justify-between py-4 px-6">
      
         <SidebarTrigger className="md:hidden" />
@@ -23,25 +23,25 @@ export default function Header() {
         <nav>
           <ul className="hidden md:flex space-x-6">
             <li>
-              <Link href="/" className="text-green-800 hover:text-green-600 flex items-center space-x-2">
+            <Link href="/products" className="text-[#FFFFFF] hover:text-[#9BB53C] flex items-center space-x-2">
                 <FaHome />
                 <span>Home</span>
               </Link>
             </li>
             <li>
-              <Link href="/products" className="text-green-800 hover:text-green-600 flex items-center space-x-2">
+              <Link href="/products" className="text-[#FFFFFF] hover:text-[#9BB53C] flex items-center space-x-2">
                 <FaLeaf />
                 <span>Products</span>
               </Link>
             </li>
             <li>
-              <Link href="/about" className="text-green-800 hover:text-green-600 flex items-center space-x-2">
+            <Link href="/products" className="text-[#FFFFFF] hover:text-[#9BB53C] flex items-center space-x-2">
                 <FaInfoCircle />
                 <span>About</span>
               </Link>
             </li>
             <li>
-              <Link href="/contact" className="text-green-800 hover:text-green-600 flex items-center space-x-2">
+            <Link href="/products" className="text-[#FFFFFF] hover:text-[#9BB53C] flex items-center space-x-2">
                 <FaPhoneAlt />
                 <span>Contact</span>
               </Link>

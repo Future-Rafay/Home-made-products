@@ -3,7 +3,8 @@ import Image from "next/image";
 export default function Hero1() {
   return (
     <section
-       className='bg-[#F9FAFB] py-12 sm:py-16 md:py-20 '
+       className='bg-[#F9FAFB] py-12 sm:py-16 md:py-20 bg-no-repeat bg-cover'
+      //  style={{backgroundImage: "url(/images/bgHero.jpg)"}}
     // className="bg-gradient-to-r from-green-200 via-yellow-200 to-green-200 text-gray-800 py-20"
     >
     {/* // <section className="py-16 bg-gradient-to-r from-[#134C28] via-[#9BB536] to-[#669E42] text-white border-b-2 border-solid border-[#134C28]"> */}

@@ -10,7 +10,7 @@ import { VscAccount } from "react-icons/vsc";
 export default function Header() {
   return (
     <header
-      className="bg-[#134C28] shadow sticky top-0 z-50 border-b-2 border-[#134C28] border-solid"
+      className=" bg-[#134C28] shadow sticky top-0 z-50 border-b-2 border-[#134C28] border-solid"
     >
       <div className="container mx-auto flex items-center justify-between py-4 px-2 sm:px-8">
 

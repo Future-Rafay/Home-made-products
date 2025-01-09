@@ -1,5 +1,5 @@
 // schemas/order.js
-export default {
+const orderDetails = {
     name: 'order',
     title: 'Order',
     type: 'document',
@@ -45,3 +45,5 @@ export default {
         },
     ],
 }
+
+export default orderDetails;

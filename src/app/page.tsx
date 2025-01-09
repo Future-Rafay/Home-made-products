@@ -1,7 +1,8 @@
 import Reviews from "@/components/Reviews";
 import FAQ from "@/components/FAQ";
-import FeaturedProduct from "@/components/FeaturedProduct";
 import Hero from "@/components/Hero";
+import ProductPage from "./products/page";
+
 
 export default function Home() {
   return (
@@ -9,7 +10,7 @@ export default function Home() {
 
       <main>
         <Hero />
-        <FeaturedProduct />
+      <ProductPage />
         <Reviews />
         <FAQ />
       </main>

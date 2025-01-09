@@ -1,6 +1,16 @@
 import ProductCard from "@/components/ProductCard";
 import { client } from "@/sanity/lib/client";
 
+
+type ProductCardProps = {
+  _id: string;
+  name: string;
+  price: string;
+  imageUrl: string; // Use imageUrl instead of image
+  description: string;
+};
+
+
 // Fetching products in a server component
 export default async function ProductPage() {
   const query = `*[_type == "product"]{
@@ -17,6 +27,7 @@ export default async function ProductPage() {
   try {
     const products = await client.fetch(query);
 
+
     return (
       <div className="container mx-auto px-6 py-12">
         <h2 className="text-3xl font-semibold text-green-700 text-center mb-8">
@@ -24,7 +35,7 @@ export default async function ProductPage() {
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {products.length > 0 ? (
-            products.map((product: any) => (
+            products.map((product : ProductCardProps ) => (
               <ProductCard
                 key={product._id}
                 _id={product._id}

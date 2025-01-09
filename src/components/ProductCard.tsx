@@ -15,6 +15,7 @@ type ProductCardProps = {
 export default function ProductCard({ _id, name, price, imageUrl, description }: ProductCardProps) {
   return (
     <div className="bg-white shadow-lg rounded-lg p-4 flex flex-col">
+      <Link href={`/products/${_id}`}>
       <Image
         src={urlFor(imageUrl).width(500).url()} // Using Sanity's image URL function
         alt={name}
@@ -23,7 +24,7 @@ export default function ProductCard({ _id, name, price, imageUrl, description }:
         height={256}
         priority
       />
-      <Link href={`/products/${_id}`}>
+      
         <h3 className="text-xl font-semibold text-green-700">{name}</h3>
       </Link>
 

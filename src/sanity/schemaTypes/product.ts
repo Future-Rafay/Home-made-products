@@ -1,5 +1,5 @@
 // schemas/product.js
-export default {
+const product = {
     name: 'product',
     title: 'Product',
     type: 'document',
@@ -41,4 +41,4 @@ export default {
       },
     ],
   }
-  
+  export default product;

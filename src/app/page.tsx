@@ -1,15 +1,14 @@
-import Hero from "@/components/Hero";
 import Reviews from "@/components/Reviews";
 import FAQ from "@/components/FAQ";
-import Hero1 from "@/components/Hero1";
 import FeaturedProduct from "@/components/FeaturedProduct";
+import Hero from "@/components/Hero";
 
 export default function Home() {
   return (
     <div className="bg-gray-50 w-full">
 
       <main>
-        <Hero1 />
+        <Hero />
         <FeaturedProduct />
         <Reviews />
         <FAQ />

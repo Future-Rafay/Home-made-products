@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 
-export default function Hero1() {
+export default function Hero() {
   return (
     <section
        className='bg-[#F9FAFB] py-12 sm:py-16 md:py-20 bg-no-repeat bg-cover'

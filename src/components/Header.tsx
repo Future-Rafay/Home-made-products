@@ -1,7 +1,6 @@
 // "use client"
 
 import Link from "next/link";
-import { SidebarTrigger } from "./ui/sidebar";
 import { FaHome, FaLeaf, FaInfoCircle, FaPhoneAlt } from "react-icons/fa";
 import Image from "next/image";
 import { SlBag } from "react-icons/sl";

@@ -1,4 +1,5 @@
 import { Card } from "@/components/ui/card";
+import Image from "next/image";
 import { FaLeaf, FaCogs, FaHands } from "react-icons/fa";
 
 export default function About() {
@@ -60,7 +61,7 @@ export default function About() {
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             <div className="bg-white p-6 shadow-lg rounded-lg">
-              <img src="/images/desighee1.jpg" alt="Team Member 1" className="w-32 h-32 rounded-full mx-auto mb-4" />
+              <Image src="/images/desighee1.jpg" alt="Team Member 1" height={128} width={128} className="w-32 h-32 rounded-full mx-auto mb-4" />
               <h4 className="text-xl font-semibold text-[#134C28]">Sarah Johnson</h4>
               <p className="text-gray-600">Lead Artisan</p>
               <p className="text-gray-500">
@@ -70,7 +71,7 @@ export default function About() {
             </div>
 
             <div className="bg-white p-6 shadow-lg rounded-lg">
-              <img src="/images/desighee1.jpg" alt="Team Member 2" className="w-32 h-32 rounded-full mx-auto mb-4" />
+            <Image src="/images/desighee1.jpg" alt="Team Member 1" height={128} width={128} className="w-32 h-32 rounded-full mx-auto mb-4" />
               <h4 className="text-xl font-semibold text-[#134C28]">Michael Brown</h4>
               <p className="text-gray-600">Production Manager</p>
               <p className="text-gray-500">
@@ -80,7 +81,7 @@ export default function About() {
             </div>
 
             <div className="bg-white p-6 shadow-lg rounded-lg">
-              <img src="/images/desighee1.jpg" alt="Team Member 3" className="w-32 h-32 rounded-full mx-auto mb-4" />
+            <Image src="/images/desighee1.jpg" alt="Team Member 1" height={128} width={128} className="w-32 h-32 rounded-full mx-auto mb-4" />
               <h4 className="text-xl font-semibold text-[#134C28]">Emily Davis</h4>
               <p className="text-gray-600">Sustainability Expert</p>
               <p className="text-gray-500">

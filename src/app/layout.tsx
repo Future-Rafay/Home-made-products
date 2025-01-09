@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 // import localFont from "next/font/local";
 import "./globals.css";
-import { SidebarProvider } from "@/components/ui/sidebar"
-import { AppSidebar } from "@/components/app-sidebar";
 import TopHeader from "@/components/TopHeader";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";

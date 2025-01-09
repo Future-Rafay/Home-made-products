@@ -1,4 +1,5 @@
 // components/CartItem.tsx
+import Image from "next/image";
 import { FaTrash, FaPlus, FaMinus } from "react-icons/fa";
 
 type CartItemProps = {
@@ -25,7 +26,10 @@ export default function CartItem({
   return (
     <div className="flex items-center justify-between p-4 bg-white shadow-md rounded-lg mb-4">
       <div className="flex items-center gap-4">
-        <img
+        <Image
+          height={80}
+          width={80}
+          key={id}
           src={image}
           alt={name}
           className="h-20 w-20 object-cover rounded-md"

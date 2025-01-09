@@ -1,4 +1,5 @@
 // components/ProductCard.tsx
+import Image from "next/image";
 import Link from "next/link";
 
 type ProductCardProps = {
@@ -18,10 +19,12 @@ export default function ProductCard({
 }: ProductCardProps) {
   return (
     <div className="bg-white shadow-lg rounded-lg p-4 flex flex-col">
-      <img
+      <Image
         src={image}
         alt={name}
         className="h-64 w-full object-cover rounded-lg mb-4"
+        width={500}
+        height={256}
       />
       <h3 className="text-xl font-semibold text-green-700">{name}</h3>
       <p className="text-gray-600 mt-2">{description}</p>

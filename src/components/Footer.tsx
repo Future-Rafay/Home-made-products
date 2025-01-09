@@ -16,7 +16,7 @@ export default function Footer() {
           />
           {/* <h1 className="text-sm font-bold text-[#9BB536] ml-10 my-4 capitalize">Made With Love</h1> */}
           <p className="text-lg text-white  mt-12">
-            Thal Naturals is more than just an organic food brand. It's a philosophy of living in harmony with nature. We believe in harnessing the power of pure, organic ingredients to cultivate a healthier, more vibrant you.
+            Thal Naturals is more than just an organic food brand. It&#39;s a philosophy of living in harmony with nature. We believe in harnessing the power of pure, organic ingredients to cultivate a healthier, more vibrant you.
           </p>
         </div>
 

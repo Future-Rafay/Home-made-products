@@ -9,7 +9,7 @@ const ReturnExchange: FC = () => {
                 <section className="text-center mb-16">
                     <h2 className="text-3xl font-semibold text-green-700 mb-4">Return & Exchange Policy</h2>
                     <p className="text-lg text-gray-600 mb-8">
-                        At Home made products, we want you to be completely satisfied with your purchase. If you're not happy with your order, we offer a return and exchange policy under the following conditions:
+                        At Home made products, we want you to be completely satisfied with your purchase. If you&#39;re not happy with your order, we offer a return and exchange policy under the following conditions:
                     </p>
                 </section>
 

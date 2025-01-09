@@ -1,12 +1,11 @@
 import Image from "next/image";
-import Link from "next/link";
 import { FaFacebook, FaInstagram, FaTiktok, FaYoutube } from "react-icons/fa";
 
 export default function Footer() {
   return (
     <footer className="bg-[#134C28] shadow mt-8 py-8 border-t-2 border-[#134C28] border-solid ">
       <div className="container mx-auto px-4 py-16">
-        {/* About Us Section */}
+        
         <div className="text-center mb-12">
           <Image
             src="/svgs/logo.svg"
@@ -22,7 +21,7 @@ export default function Footer() {
         </div>
 
         {/* Information Links */}
-        <div className="text-start md:ml-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-auto">
+        <div className="text-start md:ml-10 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4 md:gap-auto">
           <div>
             <h3 className="font-bold text-[#9BB536] mb-2">Go to</h3>
             <ul className="text-white space-y-2">

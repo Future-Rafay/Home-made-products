@@ -6,6 +6,7 @@ import { FaHome, FaLeaf, FaInfoCircle, FaPhoneAlt } from "react-icons/fa";
 import Image from "next/image";
 import { SlBag } from "react-icons/sl";
 import { VscAccount } from "react-icons/vsc";
+import AppSidebar from "./app-sidebar";
 
 export default function Header() {
   return (
@@ -13,12 +14,11 @@ export default function Header() {
       className=" bg-[#134C28] shadow sticky top-0 z-50 border-b-2 border-[#134C28] border-solid"
     >
       <div className="container mx-auto flex items-center justify-between py-4 px-2 sm:px-8">
-
-        <SidebarTrigger className="md:hidden text-white" />
+        <AppSidebar />
 
         {/* Logo */}
         <Link href="/">
-          <Image src='/svgs/logo.svg' alt="Logo" height={600} width={2000} className="w-auto h-10 sm:h-12 md:h-14" />
+          <Image src='/svgs/logo.svg' alt="Logo" height={600} width={2000} className="mx-auto w-auto h-10 sm:h-12 md:h-14" />
         </Link>
 
         {/* Navigation */}

@@ -2,6 +2,7 @@
 "use client"
 
 import CartItem from "@/components/CartItem";
+import Link from "next/link";
 import { useState } from "react";
 
 
@@ -54,7 +55,7 @@ export default function CartPage() {
   );
 
   return (
-    <div className="container w-screen mx-auto px-6 py-12">
+    <div className="container mx-auto px-6 py-12">
       <h2 className="text-3xl font-semibold text-green-700 text-center mb-8">
         Your Cart
       </h2>
@@ -91,7 +92,7 @@ export default function CartPage() {
               <span className="text-xl font-semibold text-green-700">${totalPrice.toFixed(2)}</span>
             </div>
             <button className="bg-green-600 text-white py-2 px-4 rounded-md w-full mt-6 hover:bg-green-700">
-              Proceed to Checkout
+              <Link href='/checkout'>Proceed to Checkout</Link>
             </button>
           </div>
         </div>

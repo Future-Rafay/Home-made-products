@@ -36,17 +36,17 @@ export default function RootLayout({
       </head>
       <body
       // className={`${geistSans.variable} ${geistMono.variable} antialiased`} 
-      className="max-w-[1440px] mx-auto text-center"
+      className="max-w-[1440px] mx-auto"
       >
-        <SidebarProvider> 
-          <AppSidebar />
+        {/* <SidebarProvider> 
+          <AppSidebar /> */}
           <main>
           <TopHeader />
           <Header />
             {children}
             <Footer />
           </main>
-        </SidebarProvider>
+        {/* </SidebarProvider> */}
 
       </body>
     </html>

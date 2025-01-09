@@ -30,22 +30,18 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-      <link rel="shortcut icon" href="/svgs/logo.svg" type="image/x-icon" />
+        <link rel="shortcut icon" href="/svgs/logo.svg" type="image/x-icon" />
       </head>
       <body
-      // className={`${geistSans.variable} ${geistMono.variable} antialiased`} 
-      className="max-w-[1440px] mx-auto"
+        // className={`${geistSans.variable} ${geistMono.variable} antialiased`} 
+        className="max-w-[1440px] mx-auto"
       >
-        {/* <SidebarProvider> 
-          <AppSidebar /> */}
-          <main>
+        <main>
           <TopHeader />
           <Header />
-            {children}
-            <Footer />
-          </main>
-        {/* </SidebarProvider> */}
-
+          {children}
+          <Footer />
+        </main>
       </body>
     </html>
   );

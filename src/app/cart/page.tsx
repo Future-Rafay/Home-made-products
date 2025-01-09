@@ -1,10 +1,8 @@
-// pages/cart.tsx
 "use client"
 
 import CartItem from "@/components/CartItem";
 import Link from "next/link";
 import { useState } from "react";
-
 
 const initialCart = [
   {
@@ -55,12 +53,12 @@ export default function CartPage() {
   );
 
   return (
-    <div className="container mx-auto px-6 py-12">
-      <h2 className="text-3xl font-semibold text-green-700 text-center mb-8">
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <h2 className="text-3xl font-semibold text-[#134C28] text-center mb-8">
         Your Cart
       </h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div className="space-y-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+        <div className="space-y-6 col-span-2">
           {cartItems.length === 0 ? (
             <p className="text-center text-gray-600">Your cart is empty.</p>
           ) : (
@@ -77,7 +75,7 @@ export default function CartPage() {
         </div>
 
         <div className="bg-white shadow-lg p-6 rounded-lg">
-          <h3 className="text-xl font-semibold text-green-700 mb-4">Summary</h3>
+          <h3 className="text-xl font-semibold text-[#134C28] mb-4">Summary</h3>
           <div className="space-y-4">
             <div className="flex justify-between">
               <span className="text-gray-700">Subtotal</span>
@@ -89,9 +87,9 @@ export default function CartPage() {
             </div>
             <div className="flex justify-between mt-4">
               <span className="text-lg font-semibold">Total</span>
-              <span className="text-xl font-semibold text-green-700">${totalPrice.toFixed(2)}</span>
+              <span className="text-xl font-semibold text-[#669E42]">${totalPrice.toFixed(2)}</span>
             </div>
-            <button className="bg-green-600 text-white py-2 px-4 rounded-md w-full mt-6 hover:bg-green-700">
+            <button className="bg-[#669E42] text-white py-2 px-4 rounded-md w-full mt-6 hover:bg-[#134C28]">
               <Link href='/checkout'>Proceed to Checkout</Link>
             </button>
           </div>

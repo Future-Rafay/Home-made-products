@@ -1,10 +1,9 @@
 "use client"
 
 import React, { useState } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Separator } from "@/components/ui/separator";
+import emailjs from "emailjs-com"; // Import EmailJS
 
 export default function CheckoutPage() {
   const cartItems = [
@@ -34,7 +33,7 @@ export default function CheckoutPage() {
   });
 
   // Handle form submission
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     // Validate fields
@@ -62,9 +61,40 @@ export default function CheckoutPage() {
     // Check if there are no errors
     const hasErrors = Object.values(newErrors).some((error) => error);
     if (!hasErrors) {
-      console.log("Form submitted:", formData);
-      alert("Order placed successfully!");
-      setFormData({ name: "", email: "", address: "", phone: "" }); // Clear form
+      try {
+        // Send email to cooks using EmailJS
+        const emailParams = {
+          name: formData.name,
+          email: formData.email,
+          address: formData.address,
+          phone: formData.phone,
+          cartItems: cartItems.map((item) => `${item.name} (Qty: ${item.quantity})`).join(", "),
+          totalPrice: `$${totalPrice}`,
+        };
+
+        const serviceID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+        const templateID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+        const userID = process.env.NEXT_PUBLIC_EMAILJS_USER_ID;
+
+        // Check if the values exist
+        if (!serviceID || !templateID || !userID) {
+          console.error("Missing EmailJS configuration!");
+          return; // Exit if any of the values are missing
+        }
+
+        const emailResponse = await emailjs.send(
+          serviceID, // Your EmailJS service ID
+          templateID, // Your EmailJS template ID
+          emailParams,
+          userID // Your EmailJS user ID
+        );
+
+        alert("Order placed successfully!");
+        setFormData({ name: "", email: "", address: "", phone: "" }); // Clear form
+      } catch (error) {
+        console.error("Error placing order:", error);
+        alert("There was an error placing the order. Please try again.");
+      }
     }
   };
 
@@ -77,127 +107,78 @@ export default function CheckoutPage() {
 
   return (
     <div className="container mx-auto py-10 px-4">
-      {/* Page Title */}
       <h1 className="text-3xl font-bold text-[#134C28] mb-6">Checkout</h1>
-      <Separator className="mb-8" />
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        {/* Shipping Information */}
-        <Card className="bg-[#F9FAFB] shadow-md">
-          <CardHeader>
-            <CardTitle className="text-[#134C28]">Shipping Information</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="flex flex-col gap-1">
-                <label htmlFor="name" className="text-sm text-[#1F2937]">
-                  Full Name
-                </label>
-                <Input
-                  id="name"
-                  value={formData.name}
-                  onChange={handleInputChange}
-                  placeholder="John Doe"
-                  className={`border-[#669E42] focus:ring-[#669E42] focus:border-[#9BB53C] ${
-                    errors.name ? "border-red-500" : ""
-                  }`}
-                />
-                {errors.name && (
-                  <span className="text-red-500 text-sm">{errors.name}</span>
-                )}
-              </div>
-              <div className="flex flex-col gap-1">
-                <label htmlFor="email" className="text-sm text-[#1F2937]">
-                  Email Address
-                </label>
-                <Input
-                  id="email"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  type="email"
-                  placeholder="john.doe@example.com"
-                  className={`border-[#669E42] focus:ring-[#669E42] focus:border-[#9BB53C] ${
-                    errors.email ? "border-red-500" : ""
-                  }`}
-                />
-                {errors.email && (
-                  <span className="text-red-500 text-sm">{errors.email}</span>
-                )}
-              </div>
-              <div className="flex flex-col gap-1">
-                <label htmlFor="address" className="text-sm text-[#1F2937]">
-                  Address
-                </label>
-                <Input
-                  id="address"
-                  value={formData.address}
-                  onChange={handleInputChange}
-                  placeholder="123 Nature Street, Green City"
-                  className={`border-[#669E42] focus:ring-[#669E42] focus:border-[#9BB53C] ${
-                    errors.address ? "border-red-500" : ""
-                  }`}
-                />
-                {errors.address && (
-                  <span className="text-red-500 text-sm">{errors.address}</span>
-                )}
-              </div>
-              <div className="flex flex-col gap-1">
-                <label htmlFor="phone" className="text-sm text-[#1F2937]">
-                  Phone Number
-                </label>
-                <Input
-                  id="phone"
-                  value={formData.phone}
-                  onChange={handleInputChange}
-                  type="tel"
-                  placeholder="+123 456 7890"
-                  className={`border-[#669E42] focus:ring-[#669E42] focus:border-[#9BB53C] ${
-                    errors.phone ? "border-red-500" : ""
-                  }`}
-                />
-                {errors.phone && (
-                  <span className="text-red-500 text-sm">{errors.phone}</span>
-                )}
-              </div>
-              <Button
-                type="submit"
-                className="bg-[#669E42] hover:bg-[#9BB53C] text-white mt-4"
-              >
-                Place Order
-              </Button>
-            </form>
-          </CardContent>
-        </Card>
-
-        {/* Order Summary */}
-        <Card className="bg-[#F9FAFB] shadow-md">
-          <CardHeader>
-            <CardTitle className="text-[#134C28]">Order Summary</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="space-y-4">
-              {cartItems.map((item) => (
-                <div key={item.id} className="flex justify-between items-center">
-                  <div>
-                    <h3 className="text-lg font-medium text-[#134C28]">
-                      {item.name}
-                    </h3>
-                    <p className="text-sm text-[#1F2937]">
-                      Quantity: {item.quantity}
-                    </p>
-                  </div>
-                  <p className="text-[#134C28]">${item.price * item.quantity}</p>
-                </div>
-              ))}
-              <Separator />
-              <div className="flex justify-between items-center font-bold text-lg text-[#134C28]">
-                <span>Total</span>
-                <span>${totalPrice}</span>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-      </div>
+      <form onSubmit={handleSubmit} className="space-y-6">
+        <div className="flex flex-col gap-1">
+          <label htmlFor="name" className="text-sm text-[#1F2937]">
+            Full Name
+          </label>
+          <Input
+            id="name"
+            value={formData.name}
+            onChange={handleInputChange}
+            placeholder="John Doe"
+            className={`border-[#669E42] focus:ring-[#669E42] focus:border-[#9BB53C] ${errors.name ? "border-red-500" : ""}`}
+          />
+          {errors.name && (
+            <span className="text-red-500 text-sm">{errors.name}</span>
+          )}
+        </div>
+        <div className="flex flex-col gap-1">
+          <label htmlFor="email" className="text-sm text-[#1F2937]">
+            Email Address
+          </label>
+          <Input
+            id="email"
+            value={formData.email}
+            onChange={handleInputChange}
+            type="email"
+            placeholder="john.doe@example.com"
+            className={`border-[#669E42] focus:ring-[#669E42] focus:border-[#9BB53C] ${errors.email ? "border-red-500" : ""}`}
+          />
+          {errors.email && (
+            <span className="text-red-500 text-sm">{errors.email}</span>
+          )}
+        </div>
+        <div className="flex flex-col gap-1">
+          <label htmlFor="address" className="text-sm text-[#1F2937]">
+            Address
+          </label>
+          <Input
+            id="address"
+            value={formData.address}
+            onChange={handleInputChange}
+            placeholder="123 Nature Street, Green City"
+            className={`border-[#669E42] focus:ring-[#669E42] focus:border-[#9BB53C] ${errors.address ? "border-red-500" : ""}`}
+          />
+          {errors.address && (
+            <span className="text-red-500 text-sm">{errors.address}</span>
+          )}
+        </div>
+        <div className="flex flex-col gap-1">
+          <label htmlFor="phone" className="text-sm text-[#1F2937]">
+            Phone Number
+          </label>
+          <Input
+            id="phone"
+            value={formData.phone}
+            onChange={handleInputChange}
+            type="tel"
+            placeholder="+123 456 7890"
+            className={`border-[#669E42] focus:ring-[#669E42] focus:border-[#9BB53C] ${errors.phone ? "border-red-500" : ""}`}
+          />
+          {errors.phone && (
+            <span className="text-red-500 text-sm">{errors.phone}</span>
+          )}
+        </div>
+        <Button
+          type="submit"
+          className="bg-[#669E42] hover:bg-[#9BB53C] text-white mt-4"
+        >
+          Place Order
+        </Button>
+      </form>
     </div>
-  );
+  );    
 }

@@ -54,9 +54,9 @@ export default function Header() {
             <Link href='/cart'>
             <SlBag />
             </Link>
-            <Link href='/profile'>
+            {/* <Link href='/profile'>
             <VscAccount />
-            </Link>
+            </Link> */}
           </div>
       </div>
     </header>

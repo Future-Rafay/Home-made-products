@@ -6,6 +6,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 
+
 // const geistSans = localFont({
 //   src: "./fonts/GeistVF.woff",
 //   variable: "--font-geist-sans",
@@ -37,10 +38,13 @@ export default function RootLayout({
         className="max-w-[1440px] mx-auto"
       >
         <main>
+       
           <TopHeader />
           <Header />
+          
           {children}
           <Footer />
+      
         </main>
       </body>
     </html>

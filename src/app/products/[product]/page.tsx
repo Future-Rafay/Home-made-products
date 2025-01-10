@@ -1,3 +1,5 @@
+"use client"
+
 import { Button } from "@/components/ui/button";
 import { client } from "@/sanity/lib/client";
 import Image from "next/image";
@@ -23,7 +25,14 @@ export default async function ProductDetailPage({ params }: { params: { product:
     return <div className="text-center text-xl text-gray-700 py-12">Product not found</div>;
   }
 
-  const { name, price, description, imageUrl, details } = productData[0];
+  const { _id, name, price, description, imageUrl, details } = productData[0];
+
+  // Handle add to cart
+  const handleAddToCart = () => {
+    const cart = JSON.parse(localStorage.getItem("cart") || "[]");
+    cart.push(_id);
+    localStorage.setItem("cart", JSON.stringify(cart));
+  };
 
   return (
     <div className="container mx-auto px-6 py-12">
@@ -45,11 +54,14 @@ export default async function ProductDetailPage({ params }: { params: { product:
           <p className="text-gray-600 mb-8">{details}</p>
 
           <div className="flex gap-4">
-            <Button className="bg-[#669E42] text-white py-2 px-6 rounded-md hover:bg-[#9BB53C] flex items-center gap-2">
+            <Button
+              className="bg-[#669E42] text-white py-2 px-6 rounded-md hover:bg-[#9BB53C] flex items-center gap-2"
+              onClick={handleAddToCart}
+            >
               <FaShoppingCart /> Add to Cart
             </Button>
             <Button className="bg-[#9BB53C] text-white py-2 px-6 rounded-md hover:bg-[#669E42] ">
-            <Link  href='/checkout'  className="flex items-center gap-2"><FaCreditCard /><span>Buy Now</span></Link>
+              <Link href='/checkout' className="flex items-center gap-2"><FaCreditCard /><span>Buy Now</span></Link>
             </Button>
           </div>
         </div>

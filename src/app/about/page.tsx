@@ -8,10 +8,10 @@ export default function About() {
       <div className="container mx-auto px-6">
         {/* Company Overview */}
         <section className="text-center mb-16">
-          <h2 className="text-3xl font-semibold text-[#134C28] mb-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-[#134C28] mb-4">
             About Homemade Products
           </h2>
-          <p className="text-lg text-gray-600">
+          <p className="text-base sm:text-lg md:text-xl text-gray-600">
             At Homemade Products, we believe in the beauty of nature and the importance of
             sustainability. Our products are crafted with care and passion, using only the
             highest-quality ingredients to ensure they meet the needs of a healthy lifestyle.
@@ -20,7 +20,7 @@ export default function About() {
 
         {/* How We Make Our Products */}
         <section className="mb-16">
-          <h3 className="text-2xl font-semibold text-[#134C28] text-center mb-8">
+          <h3 className="text-xl sm:text-2xl font-semibold text-[#134C28] text-center mb-8">
             How We Make Our Products
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
@@ -61,7 +61,7 @@ export default function About() {
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             <div className="bg-white p-6 shadow-lg rounded-lg">
-              <Image src="/images/desighee1.jpg" alt="Team Member 1" height={128} width={128} className="w-32 h-32 rounded-full mx-auto mb-4" />
+              <Image src="/images/emily.jpg" alt="Team Member 1" height={128} width={128} className="w-32 h-32 rounded-full mx-auto mb-4" />
               <h4 className="text-xl font-semibold text-[#134C28]">Sarah Johnson</h4>
               <p className="text-gray-600">Lead Artisan</p>
               <p className="text-gray-500">
@@ -71,7 +71,7 @@ export default function About() {
             </div>
 
             <div className="bg-white p-6 shadow-lg rounded-lg">
-            <Image src="/images/desighee1.jpg" alt="Team Member 1" height={128} width={128} className="w-32 h-32 rounded-full mx-auto mb-4" />
+            <Image src="/images/carl.jpg" alt="Team Member 1" height={128} width={128} className="w-32 h-32 rounded-full mx-auto mb-4" />
               <h4 className="text-xl font-semibold text-[#134C28]">Michael Brown</h4>
               <p className="text-gray-600">Production Manager</p>
               <p className="text-gray-500">
@@ -81,7 +81,7 @@ export default function About() {
             </div>
 
             <div className="bg-white p-6 shadow-lg rounded-lg">
-            <Image src="/images/desighee1.jpg" alt="Team Member 1" height={128} width={128} className="w-32 h-32 rounded-full mx-auto mb-4" />
+            <Image src="/images/chandler.jpg" alt="Team Member 1" height={128} width={128} className="w-32 h-32 rounded-full mx-auto mb-4" />
               <h4 className="text-xl font-semibold text-[#134C28]">Emily Davis</h4>
               <p className="text-gray-600">Sustainability Expert</p>
               <p className="text-gray-500">

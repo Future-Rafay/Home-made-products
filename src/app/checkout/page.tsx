@@ -73,7 +73,7 @@ export default function CheckoutPage() {
         };
 
         const serviceID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
-        const templateID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+        const templateID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID_ORDER;
         const userID = process.env.NEXT_PUBLIC_EMAILJS_USER_ID;
 
         // Check if the values exist
@@ -82,7 +82,7 @@ export default function CheckoutPage() {
           return; // Exit if any of the values are missing
         }
 
-        const emailResponse = await emailjs.send(
+        await emailjs.send(
           serviceID, // Your EmailJS service ID
           templateID, // Your EmailJS template ID
           emailParams,

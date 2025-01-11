@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import emailjs from "emailjs-com";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -16,6 +17,7 @@ export default function ContactPage() {
   });
 
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false); // Loading state for submit button
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -51,26 +53,49 @@ export default function ContactPage() {
     return isValid;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (validateForm()) {
-      setFormSubmitted(true); // Show success message
+    if (!validateForm()) return;
+
+    setLoading(true);
+    try {
+      const result = await emailjs.send(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID_CONTACT!,
+        {
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+        },
+        process.env.NEXT_PUBLIC_EMAILJS_USER_ID
+      );
+
+      if (result.status === 200) {
+        setFormSubmitted(true); // Show success message
+        setFormData({ name: "", email: "", message: "" }); // Reset form
+      } else {
+        console.error("Failed to send email:", result.text);
+      }
+    } catch (error) {
+      console.error("Error sending email:", error);
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <div className="min-h-screen bg-white text-gray-800 flex items-center justify-center">
+    <div className="min-h-screen bg-white text-gray-800 py-10 md:py-20 flex items-center justify-between">
       <div className="container mx-auto p-6">
-        <div className="text-center mb-8">
-          <h1 className="text-4xl font-semibold text-[#134C28]">Get in Touch</h1>
-          <p className="text-lg text-[#9BB53C]">
+        <div className="text-center ">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-[#134C28] mb-4">Get in Touch</h1>
+          <p className="text-base sm:text-lg md:text-xl text-[#9BB53C]">
             We&#39;d love to hear from you. Whether it&#39;s a question or feedback, feel free to reach out!
           </p>
         </div>
-        <div className="flex flex-col md:flex-row gap-8">
+        <div className="flex flex-col md:flex-row md:gap-10 my-10 md:my-20">
           {/* Contact Info */}
           <div className="md:w-1/3 text-center md:text-left">
-            <h2 className="text-2xl font-semibold text-[#134C28] mb-4">Contact Information</h2>
+            <h2 className="text-xl font-semibold text-[#134C28] mb-4">Contact Information</h2>
             <p className="text-lg text-[#9BB53C]">We are here to help you with any inquiries. Reach out to us!</p>
             <div className="mt-6">
               <p className="text-lg font-semibold text-[#134C28]">Email:</p>
@@ -83,22 +108,22 @@ export default function ContactPage() {
           </div>
 
           {/* Form or Success Message */}
-          <div className="md:w-2/3">
+          <div className="md:w-1/2 flex justify-center items-center">
             {formSubmitted ? (
-              <div className="bg-[#F9FAFB] p-6 rounded-lg shadow-lg text-center">
-                <h2 className="text-3xl font-semibold text-[#134C28] mb-4">Thank You!</h2>
-                <p className="text-lg text-[#9BB53C]">
+              <div className="bg-[#F9FAFB] mt-10 p-6 rounded-lg shadow-lg text-center h-full">
+                <h2 className="text-3xl font-semibold text-[#134C28]">Thank You!</h2>
+                <p className="text-base sm:text-lg md:text-xl text-[#9BB53C] my-4">
                   Your message has been successfully sent. We will get back to you shortly!
                 </p>
                 <button
                   onClick={() => setFormSubmitted(false)}
-                  className="mt-6 py-3 px-6 bg-[#669E42] text-white font-semibold rounded-md hover:bg-[#134C28] transition duration-300"
+                  className="text-xs px-3 py-2 sm:text-sm sm:px-5 sm:py-3 md:text-base md:px-6 md:py-3 bg-[#669E42] text-white font-semibold rounded-md hover:bg-[#134C28] transition duration-300"
                 >
                   Send Another Message
                 </button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="bg-[#F9FAFB] p-6 rounded-lg shadow-lg">
+              <form onSubmit={handleSubmit} className="bg-[#F9FAFB] p-6 rounded-lg shadow-lg mt-10">
                 <div className="mb-4">
                   <label htmlFor="name" className="block text-lg font-semibold text-[#134C28]">
                     Full Name
@@ -144,8 +169,9 @@ export default function ContactPage() {
                 <button
                   type="submit"
                   className="w-full py-3 bg-[#669E42] text-white font-semibold rounded-md hover:bg-[#134C28] transition duration-300"
+                  disabled={loading}
                 >
-                  Send Message
+                  {loading ? "Sending..." : "Send Message"}
                 </button>
               </form>
             )}

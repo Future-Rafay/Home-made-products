@@ -4,10 +4,10 @@ import { Button } from "@/components/ui/button";
 import { client } from "@/sanity/lib/client";
 import Image from "next/image";
 import Link from "next/link";
-import { FaCreditCard, FaShoppingCart } from "react-icons/fa";
+import { FaShoppingCart } from "react-icons/fa";
 
 export default async function ProductDetailPage({ params }: { params: { product: string } }) {
-  const { product } = params; // Get product ID from the URL
+  const { product } = params; 
 
   // Fetch product data using Sanity query based on product ID
   const query = `*[_type == "product" && _id == $productId]{
@@ -25,13 +25,11 @@ export default async function ProductDetailPage({ params }: { params: { product:
     return <div className="text-center text-xl text-gray-700 py-12">Product not found</div>;
   }
 
-  const { _id, name, price, description, imageUrl, details } = productData[0];
+  const {  name, price, description, imageUrl, details } = productData[0];
 
   // Handle add to cart
   const handleAddToCart = () => {
-    const cart = JSON.parse(localStorage.getItem("cart") || "[]");
-    cart.push(_id);
-    localStorage.setItem("cart", JSON.stringify(cart));
+    console.log("Added to cart")
   };
 
   return (
@@ -43,7 +41,7 @@ export default async function ProductDetailPage({ params }: { params: { product:
             alt={name}
             width={500}
             height={500}
-            className="object-cover rounded-lg shadow-lg"
+            className="w-[300px] h-[300px] md:w-[500px] md:h-[500px] object-cover rounded-lg shadow-lg"
             priority
           />
         </div>
@@ -61,7 +59,7 @@ export default async function ProductDetailPage({ params }: { params: { product:
               <FaShoppingCart /> Add to Cart
             </Button>
             <Button className="bg-[#9BB53C] text-white py-2 px-6 rounded-md hover:bg-[#669E42] ">
-              <Link href='/checkout' className="flex items-center gap-2"><FaCreditCard /><span>Buy Now</span></Link>
+              <Link href='/checkout' className="flex items-center gap-2">Buy Now</Link>
             </Button>
           </div>
         </div>

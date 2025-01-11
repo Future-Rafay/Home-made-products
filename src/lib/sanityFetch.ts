@@ -1,13 +1,16 @@
-// lib/sanityFetch.ts
+// Server Component to fetch product data
 import { client } from "@/sanity/lib/client";
 
-// Function to fetch products by type (e.g., featured, all products, etc.)
-export const fetchProducts = async (query: string) => {
-  try {
-    const products = await client.fetch(query);
-    return products;
-  } catch (error) {
-    console.error("Error fetching products:", error);
-    return [];
-  }
-};
+export async function getProductData(productId: string) {
+  const query = `*[_type == "product" && _id == $productId]{
+    _id,
+    name,
+    price,
+    description,
+    "imageUrl": image.asset->url,
+    details
+  }`;
+
+  const productData = await client.fetch(query, { productId });
+  return productData.length ? productData[0] : null;
+}

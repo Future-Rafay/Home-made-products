@@ -4,6 +4,8 @@ import "./globals.css";
 import TopHeader from "@/components/TopHeader";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 
@@ -38,13 +40,25 @@ export default function RootLayout({
         className="max-w-[1440px] mx-auto"
       >
         <main>
-       
+
           <TopHeader />
           <Header />
-          
+
           {children}
           <Footer />
-      
+          <ToastContainer
+            position="bottom-right"
+            autoClose={3000}
+            limit={2}
+            hideProgressBar={false}
+            newestOnTop
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover={false}
+            theme="light"
+          />
         </main>
       </body>
     </html>

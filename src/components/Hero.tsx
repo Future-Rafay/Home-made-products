@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 
 export default function Hero() {
@@ -12,18 +13,18 @@ export default function Hero() {
     {/* // <section className="py-16 bg-gradient-to-r from-[#134C28] via-[#9BB536] to-[#669E42] text-white border-b-2 border-solid border-[#134C28]"> */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col lg:flex-row items-center text-center lg:text-left">
-          <div className="lg:w-1/2 mb-8 lg:mb-0">
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-4 text-[#134C28]">
-              Welcome to Homemade Products
+          <div className="lg:w-1/2 text-center lg:text-left">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4 leading-snug text-[#134C28]">
+              Pure & Natural <br /> Homemade Products
             </h1>
-            <p className="text-base sm:text-lg md:text-xl mb-6 text-[#669E42]">
-              Discover pure and natural products, crafted with love in Switzerland.
+            <p className="text-lg sm:text-xl md:text-2xl my-6 text-[#669E42]">
+              Crafted with love in Switzerland, discover the best in organic and healthy products.
             </p>
-            <button className="text-[10px] px-3 py-2 sm:text-sm sm:px-5 sm:py-3 md:text-base md:px-6 md:py-3 bg-[#134C28] hover:bg-[#669E42] text-white font-semibold rounded shadow transition">
-              Explore Products
+            <button className="text-white bg-[#9BB536] hover:bg-[#134C28] px-6 py-3 rounded-lg font-medium text-sm sm:text-base md:text-lg shadow-lg lg:hover:shadow-2xl transition">
+              <Link href='/products'>Explore Products</Link>
             </button>
           </div>
-          <div className="lg:w-1/2 flex justify-center">
+          <div className="lg:w-1/2 flex justify-center mt-10">
             <Image
               src="/images/hero.png"
               alt="Hero Image"  

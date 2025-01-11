@@ -4,7 +4,6 @@ import Link from "next/link";
 import { FaHome, FaLeaf, FaInfoCircle, FaPhoneAlt } from "react-icons/fa";
 import Image from "next/image";
 import { SlBag } from "react-icons/sl";
-import { VscAccount } from "react-icons/vsc";
 import AppSidebar from "./app-sidebar";
 
 export default function Header() {

@@ -1,17 +1,15 @@
 import ProductCard from "@/components/ProductCard";
 import { client } from "@/sanity/lib/client";
 
-
 type ProductCardProps = {
   _id: string;
   name: string;
   price: string;
-  imageUrl: string; // Use imageUrl instead of image
+  imageUrl: string;
   description: string;
 };
 
 
-// Fetching products in a server component
 export default async function ProductPage() {
   const query = `*[_type == "product"]{
     _id,
@@ -30,7 +28,7 @@ export default async function ProductPage() {
 
     return (
       <div className="container mx-auto px-6 py-12">
-        <h2 className="text-3xl font-semibold text-green-700 text-center mb-8">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold text-[#134C28] text-center mb-8">
           Our Products
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
@@ -46,7 +44,7 @@ export default async function ProductPage() {
               />
             ))
           ) : (
-            <p className="text-center text-gray-500">No products available.</p>
+            <p className="text-center text-gray-500 m-20">No products available.</p>
           )}
         </div>
       </div>
